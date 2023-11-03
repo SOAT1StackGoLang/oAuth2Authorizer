@@ -31,10 +31,6 @@ jobs:
         uses: ncipollo/release-action@v1.12.0
         with:
           artifacts: "bundle.zip"
-          allowUpdates: true
-          generateReleaseNotes: true
-          makeLatest: "latest"
-          name: "Latest Release"
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
