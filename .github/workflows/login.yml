@@ -12,5 +12,4 @@ jobs:
       - name: Authenticate
         run: |
           valid=$(aws cognito-idp initiate-auth --client-id 17epfms5np5l92dsp4jk68m34d --auth-flow USER_PASSWORD_AUTH --region us-east-1 --auth-parameters USERNAME=11122233345,PASSWORD=F@ap1234 | jq -r '.AuthenticationResult.AccessToken')
-          echo "::set-output name=VALID::$valid"
           echo "VALID=$valid" >> $GITHUB_OUTPUT
