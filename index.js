@@ -4,9 +4,9 @@ const { CognitoJwtVerifier } = require("aws-jwt-verify");
 // so the cache can be reused for subsequent invocations. Then, only during the
 // first invocation, will the verifier actually need to fetch the JWKS.
 const verifier = CognitoJwtVerifier.create({
-  userPoolId: "us-east-1_rMynssSb6",
+  userPoolId: process.env.USER_POOL_ID,
   tokenUse: "access",
-  clientId: "17epfms5np5l92dsp4jk68m34d",
+  clientId: process.env.CLIENT_ID,
 });
 exports.handler = async (event) => {  
   if (!event.headers.authorization) {
