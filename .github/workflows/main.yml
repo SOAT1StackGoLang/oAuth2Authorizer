@@ -27,6 +27,10 @@ jobs:
         with:
           name: bundle
           path: bundle.zip
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "bundle.zip"
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
