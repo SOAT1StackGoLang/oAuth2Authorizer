@@ -8,10 +8,8 @@ const verifier = CognitoJwtVerifier.create({
   tokenUse: "access",
   clientId: "17epfms5np5l92dsp4jk68m34d",
 });
-exports.handler = async (event) => {
-  console.log('event.headers.Authorization', event.headers.Authorization);
-  
-  if (!event.headers.Authorization) {
+exports.handler = async (event) => {  
+  if (!event.headers.authorization) {
     console.log('Returning not authorized');
     return {
       isAuthorized: false,
@@ -19,7 +17,7 @@ exports.handler = async (event) => {
   }
   try {    
     console.log('Verifying in cognito');
-    await verifier.verify(event.headers.Authorization);
+    await verifier.verify(event.headers.authorization);
     
     console.log('Returning authorized');
     return {
