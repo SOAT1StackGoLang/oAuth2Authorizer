@@ -1,3 +1,5 @@
+const { CognitoJwtVerifier } = require("aws-jwt-verify");
+
 // Create the verifier outside the Lambda handler (= during cold start),
 // so the cache can be reused for subsequent invocations. Then, only during the
 // first invocation, will the verifier actually need to fetch the JWKS.
