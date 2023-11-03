@@ -35,6 +35,7 @@ jobs:
           generateReleaseNotes: true
           makeLatest: "latest"
           name: "Latest Release"
+          tag: v1.0.0
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
