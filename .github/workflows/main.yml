@@ -27,6 +27,14 @@ jobs:
         with:
           name: bundle
           path: bundle.zip
+      - name: default deploy
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          function_name: oAuth2Authorizer
+          zip_file: bundle.zip
       - name: Upload Release
         uses: ncipollo/release-action@v1.13.0
         with:
@@ -37,11 +45,3 @@ jobs:
           removeArtifacts: true
           makeLatest: "latest"
           name: "Latest Release"
-      - name: default deploy
-        uses: appleboy/lambda-action@master
-        with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
-          function_name: oAuth2Authorizer
-          zip_file: bundle.zip
