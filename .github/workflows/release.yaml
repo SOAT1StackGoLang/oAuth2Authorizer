@@ -1,0 +1,27 @@
+name: Releases
+on: 
+  push:
+    tags:
+    - '*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - name: zip
+      uses: montudor/action-zip@v0.1.0
+      with:
+        args: zip -qq -r ./bundle.zip ./
+    - name: Upload Release
+      uses: ncipollo/release-action@v1.13.0
+      with:
+          artifacts: "bundle.zip"
+          allowUpdates: true
+          generateReleaseNotes: true
+          artifactErrorsFailBuild: false
+          removeArtifacts: true
+          replacesArtifacts: true
+          makeLatest: "latest"
+          name: "Latest Release"
