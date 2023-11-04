@@ -28,14 +28,15 @@ jobs:
           name: bundle
           path: bundle.zip
       - name: Upload Release
-        uses: ncipollo/release-action@v1.12.0
+        uses: ncipollo/release-action@v1.13.0
         with:
           artifacts: "bundle.zip"
           allowUpdates: true
           generateReleaseNotes: true
+          artifactErrorsFailBuild: false
+          removeArtifacts: true
           makeLatest: "latest"
           name: "Latest Release"
-          tag: v1.0.0
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:
