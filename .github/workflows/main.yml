@@ -36,7 +36,7 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
-          function_name: oAuth2Authorizer
+          function_name: techchallenge_oAuth2Authorizer
           zip_file: bundle.zip
       - name: Upload Release
         uses: ncipollo/release-action@v1.13.0
